@@ -17,6 +17,7 @@ public class EmailController {
 
     @PostMapping(path = "/send")
     public boolean sendEmail(@RequestBody EmailModel emailModel){
-        return emailUtil.sendEmail(emailModel.getTo(),emailModel.getSubject(),emailModel.getText());
+        return emailUtil.sendEmail(emailModel.getTo(), emailModel.getSubject(),
+                emailModel.getText());
     }
 }

@@ -18,7 +18,14 @@ public class CustomerController {
 
     @PostMapping(path = "/registerCustomer")
     public CustomerModel registerCustomer(@RequestBody CustomerModel customerModel) {
-        CustomerEntity customerEntity = customerService.registerCustomer(new CustomerEntity(null, customerModel.getFirstName(), customerModel.getLastName(), customerModel.getEmail()));
-        return new CustomerModel(customerEntity.getId(), customerEntity.getFirstName(), customerEntity.getLastName(), customerEntity.getEmail());
+        CustomerEntity customerEntity =
+                customerService.registerCustomer(new CustomerEntity(null,
+                customerModel.getFirstName(),
+                customerModel.getLastName(),
+                customerModel.getEmail()));
+        return new CustomerModel(customerEntity.getId(),
+                customerEntity.getFirstName(),
+                customerEntity.getLastName(),
+                customerEntity.getEmail());
     }
 }

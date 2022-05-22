@@ -26,7 +26,8 @@ public class CustomerService {
 
     public CustomerEntity registerCustomer(CustomerEntity customerEntity){
         customerEntity = customerRepository.save(customerEntity);
-        String emailBody = "New customer was registred with the user " + customerEntity.getFirstName() + " " +customerEntity.getLastName();
+        String emailBody = "New customer was registred with the user " +
+                customerEntity.getFirstName() + " " +customerEntity.getLastName();
         NotificationServiceRequest notificationServiceRequest = new NotificationServiceRequest(
                 customerEntity.getEmail(),
                 "Registration Confirmation",
@@ -35,7 +36,8 @@ public class CustomerService {
 
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
-        HttpEntity<NotificationServiceRequest> httpEntity = new HttpEntity<>(notificationServiceRequest, headers);
+        HttpEntity<NotificationServiceRequest> httpEntity =
+                new HttpEntity<>(notificationServiceRequest, headers);
         restTemplate.postForObject(
                 environment.getProperty("notification.service.url"),
                 httpEntity,
